@@ -11,23 +11,85 @@ import sys
 import json
 
 """
-loads data from a text file
+saves data to a text file
+takes filename (provided by calling function) and JSON-ready data array 
 """
 
-def txt_save(target_name):
+def txt_save(target_name, run_data):
+    f = open(target_name, "w")
+    f.write(json.dumps(run_data))
+    f.close()
+    # again could do sanitization here, do values from run_data individually
+
     return
 
 """
 loads data from a text file
+takes filename (provided by user probbably?), returns data array
 """
 
-def txt_load(targert_name):
-    return
+def txt_load(target_name):
+    # opens and reads json from file into python object 
+    f = open(target_name, "r")
+    target_data = json.loads(f.read()) 
+    # could do input stuff here like read from the JSON to the return array 
+
+    # closes file for nice filesystem stuff
+    f.close()
+
+
+    return target_data
 
 """
 fills a dict w/ the info the thing needs
+
+per run things: 
+veg time
+flower time
+strain
+watts
+harvest weight
+trim weight wet
+trim weight dry
+waste weight 
+a buds
+b buds
+c buds
+
+hash: input
+- 1st pull
+- 2nd pull 
+- b grade
+- food grade
+- total 
+
+rosin: input
+- 1st press
+- 90-120 
+- b grade
+- full spec 
+- food grade
+- total
+
+per plant things:
+tag#
+harvest weight
+
+
+so this is what the below will need to do. I think I need to do it in steps. 
+like, poll @ harvest, @ trim, @ hash 
+csv-compatible is the goal 
+
 """
 def collect_data(data_holder):
+    run_data = {
+        'strain': "",
+        'watts': 1,
+        'plants': 1
+
+
+    }
+
     return
 
 """
