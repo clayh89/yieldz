@@ -6,6 +6,8 @@ versus inputs (watts, nutrients, etc)
 to generate expected yields for a known clone in a known space 
 
 storage of past runs, predictions, etc via local text file and nothing else. no clouds. 
+
+by Henry Clay @clayh89 on github
 """
 import sys
 import json
@@ -52,6 +54,7 @@ harvest weight
 trim weight wet
 trim weight dry
 waste weight 
+prewash
 a buds
 b buds
 c buds
@@ -91,6 +94,11 @@ def collect_data(data_holder):
     }
 
     return
+
+
+
+
+
 
 """
 calculates based on read or supplied info
