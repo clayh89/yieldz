@@ -78,5 +78,99 @@ def shrinkage_wet(harvest, waste, trim, pre):
     total -= trim
     total -= waste
     total -= pre 
-    return total
+    return total 
+
+def run_hash_quick(starting, u1, u2, fg=False, fs=False):
+    fg1 = 0
+    fs1 = 0
+    first_pull = input("1st pull yield?")
+    micron = input("{u1}-{u2} yield?")
+    
+    if (fg == True):
+        fg1 = input("Food grade yield?")
+    
+    if(fs == True):
+        fs1 = input("Full spec yield?")
+
+    other = input("other?")
+
+    total = fg1 + fs1 + first_pull + micron + other
+    ypercent = total / starting
+
+    return [first_pull, micron, fg1, fs1, other, total, ypercent]
+
+# do this w/ arrays for custom bag sizes
+
+def run_hash_full(input): 
+    fg1 = 0
+    fs1 = 0
+    first_pull = input("1st pull yield?")
+    u220 = input("220")
+    u190 = input("190")
+    u160 = input("160")
+    u120 = input("120")
+    u90 = input("90")
+    u73 = input("73")
+    u40 = input("40")
+    u25 = input("25")
+    
+    if (fg == True):
+        fg1 = input("Food grade yield?")
+    
+    if(fs == True):
+        fs1 = input("Full spec yield?")
+
+    other = input("other?")
+
+    total = fg1 + fs1 + first_pull + u220 + u190 + u160 + u120 + u90 + u73 + u40 + u25 + other
+    ypercent = total / starting
+    
+    return [first_pull, fg1, fs1, u220, u190, u160, u120, u90, u73, u40, u25, other, total, ypercent]
+    
+def run_hash_baglist(starting, baglist):
+    bag_holder = { bag : 0 for bag in baglist }
+    total_bags = 0
+    total_yield = 0
+
+    for bag, n in baglist:
+        pull = input("{bag} yield")
+        bag_holder(bag = pull)
+        total_bags = n
+        total_yield += pull
+
+    bag_avg = total_yield / total_bags
+    
+    
+    return [bag_holder, bag_avg, total_yield, total_bags]
+
+def run_compare(run1, run2):
+    ratio = 0
+    if run1 > run2: 
+        ratio = run2 / run1
+        print(ratio, " loss vs run 1")
+
+    if run1 < run2: 
+        ratio = run1 / run2
+        print(ratio, " gain vs run 1")
+        
+    return
+
+def run_rosin(input, u1, u2, fg=False, fs=False):
+    fg1 = 0
+    fs1 = 0
+    first_pull = input("1st pull yield?")
+    micron = input("{u1}-{u2} yield?")
+    
+    if (fg == True):
+        fg1 = input("Food grade yield?")
+    
+    if(fs == True):
+        fs1 = input("Full spec yield?")
+
+    other = input("other?")
+
+    return [first_pull, micron, fg1, fs1, other]
+
+
+
 
