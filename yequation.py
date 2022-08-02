@@ -90,16 +90,16 @@ def shrinkage_wet(harvest, waste, trim, pre):
 def run_hash_quick(starting, u1, u2, fg=False, fs=False):
     fg1 = 0
     fs1 = 0
-    first_pull = input("1st pull yield?")
-    micron = input("{u1}-{u2} yield?")
+    first_pull =  int(input("1st pull yield?"))
+    micron =  int(input("{u1}-{u2} yield?"))
     
     if (fg == True):
-        fg1 = input("Food grade yield?")
+        fg1 =  int(input("Food grade yield?"))
     
     if(fs == True):
-        fs1 = input("Full spec yield?")
+        fs1 =  int(input("Full spec yield?"))
 
-    other = input("other?")
+    other =  int(input("other?"))
 
     total = fg1 + fs1 + first_pull + micron + other
     ypercent = total / starting
@@ -134,23 +134,23 @@ def run_hash_full(starting, fs = False, fg = False):
         'input' : starting
     }
     
-    val['first_pull'] = input("1st pull yield?")
-    val['220u'] = input("220")
-    val['190u'] = input("190")
-    val['160u'] = input("160")
-    val['120u'] = input("120")
-    val['90u'] = input("90")
-    val['73u'] = input("73")
-    val['40u'] = input("40")
-    val['25u'] = input("25")
+    val['first_pull'] = int(input("1st pull yield?"))
+    val['220u'] = int(input("220"))
+    val['190u'] = int(input("190"))
+    val['160u'] = int(input("160"))
+    val['120u'] = int(input("120"))
+    val['90u'] = int(input("90"))
+    val['73u'] = int(input("73"))
+    val['40u'] = int(input("40"))
+    val['25u'] = int(input("25"))
   
     if (fg == True):
-        val['food_grade'] = input("Food grade yield?")
+        val['food_grade'] =  int(input("Food grade yield?"))
     
     if(fs == True):
-        val['full_spec'] = input("Full spec yield?")
+        val['full_spec'] =  int(input("Full spec yield?"))
 
-    val['other'] = input("other?")
+    val['other'] =  int(input("other?"))
 
     val['total'] = val['food_grade'] + val['full_spec'] + val['first_pull'] + val['220u'] + val['190u'] + val['160u'] + val['120u'] + val['90u'] + val['73u'] + val['40u'] + val['25u'] + val['other']
     val['ypercent'] = val['total'] / val['starting']
@@ -173,7 +173,7 @@ def run_hash_baglist(starting, baglist):
     }
 
     for bag in baglist:
-        pull = input("{bag}?")
+        pull = int(input("{bag}?"))
         val[bag] = pull
         val['total_bags'] +=1
         val['total_yield'] += pull
@@ -219,25 +219,31 @@ def bag_sort(bags):
 
 
 
-def run_rosin(input, u1, u2, fg=False, fs=False):
+def run_rosin(input, fg=False, fs=False):
 
     val = {
         'food_grade' : 0,
         'full_spec' : 0, 
         'first_pull' : 0,
         'other' : 0,
-
+        'range': ""
     }
 
+    val['range'] = input("micron range?")
+
     val['first_pull'] = input("1st pull yield?")
-    
+
+    int(val['first_pull'])
+
     if (fg == True):
         val['food_grade']= input("Food grade yield?")
-    
+        int(val['food_grade'])
     if(fs == True):
         val['full_spec'] = input("Full spec yield?")
+        int(val['full_spec'])
 
-    val['other'] = input('other yield?')
+
+    val['other'] = int(input('other yield?'))
 
     return val 
 
