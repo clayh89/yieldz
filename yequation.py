@@ -48,7 +48,48 @@ csv-compatible is the goal
 """
 
 from tracemalloc import start
+import json
+# ??? ^^^
 
+# so we need the concept of varieties 
+
+# takes a list of strains, runs compare functions on them 
+def hash_compare(strains):
+    val = {}
+    for strain in strains:
+        val[strain] = hash_yield_per_plant(strain)
+
+    return val
+
+
+# heavily prototyped, this needs refinement.  but this should tell me what else I need to build 
+def hash_yield_per_plant(strain):
+    # looks up historical data 
+    # open datafile folder
+    # holder 
+    val = {}
+    # name of hypothetical data storage 
+    datafile = open('./archive')
+    # for each saved file, if the name includes the strain, dump into json variable and pull date and yield per plant
+    for file in datafile:
+        # this should be grep or regex or something
+        if file.name() == strain:
+            f = file.open(file)
+            data = json.dumps(f)
+            date = data['date']
+            yhash = data['hash_yield']
+            val[date] = yhash
+            f.close()
+
+    hashy, count = 0
+
+    for entry in val:
+        hashy += val[entry]
+        count += 1
+
+    avg = (hashy / count)
+
+    return avg
 
 def gpwatt(grams, watts):
     ratio = grams / watts
