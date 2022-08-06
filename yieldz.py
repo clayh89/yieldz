@@ -11,7 +11,7 @@ by Henry Clay @clayh89 on github
 """
 import sys
 import json
-
+import sqlite3
 """
 saves data to a text file
 takes filename (provided by calling function) and JSON-ready data array 

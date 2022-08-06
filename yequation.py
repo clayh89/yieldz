@@ -48,8 +48,10 @@ csv-compatible is the goal
 """
 
 from tracemalloc import start
-import json
+
 # ??? ^^^
+import json
+import sqlite3
 
 # so we need the concept of varieties 
 
