@@ -95,10 +95,36 @@ def collect_data(data_holder):
 
     return
 
+"""
+error and help message handlers - for bad program input
+"""
 
+def help_msg():
+    msg = """
+    Yieldz Help  
+    
+    Yieldz calculates flower, hash, and rosin runs by processing data stored by the user. 
 
+    To generate data, use the -i or -input option. This will begin polling. 
+    Using -if, -ih, or -ir will instead select Flower, Hash, or Rosin polling, respectively
+    (useful for repeatable workflows, cli, and csv applications)
 
+    -i -f will allow you to specify an output path
 
+    To process data, use the -o or -output option. This will generate reports based on the options you select at runtime. This is the default mode 
+
+    -o -f will allow you to specify a path to process 
+
+    """
+    return msg
+
+def error_msg():
+    msg = """
+    Options are 
+    yieldz | -i(nput) -if -ih -if -o(utput) -of -oh -or | -f | -fg | -fs  
+    
+    """
+    return msg
 
 """
 calculates based on read or supplied info
@@ -109,13 +135,15 @@ def calculate(data_holder):
 
 def main(option = "g", filename = "default"): 
     print("welcome to yieldz")
-    if option == "recall":
+    if option == "input":
         return
-    elif option == "compare":
+    elif option == "output":
         return
-    elif option == "generate":
-        return
+    elif option == "help":
+        print(help_msg())
+        return 
     else:
+        print(error_msg())
         return
 
 
