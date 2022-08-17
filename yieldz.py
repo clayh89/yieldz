@@ -84,6 +84,40 @@ like, poll @ harvest, @ trim, @ hash
 csv-compatible is the goal 
 
 """
+
+def input_polling(f):
+    print(f)
+    return f
+
+def input_flower(f):
+    print(f)
+    return f
+
+def input_hash(f):
+    print(f)
+    return f
+
+
+def input_rosin(f):
+    print(f)
+    return f
+    
+def output_polling(f):
+    print(f)
+    return f
+
+def output_flower(f):
+    print(f)
+    return f
+
+def output_hash(f):
+    print(f)
+    return f
+
+def output_rosin(f):
+    print(f)
+    return f
+
 def collect_data(data_holder):
     run_data = {
         'strain': "",
@@ -121,7 +155,7 @@ def help_msg():
 def error_msg():
     msg = """
     Options are 
-    yieldz | -i(nput) -if -ih -if -o(utput) -of -oh -or | -f | -fg | -fs  
+    yieldz | -i(nput) -if -ih -ir -o(utput) -of -oh -or | -f | -fg | -fs  
     
     """
     return msg
@@ -135,11 +169,31 @@ def calculate(data_holder):
 
 def main(option = "g", filename = "default"): 
     print("welcome to yieldz")
-    if option == "input":
+    if option == "-i":
+        input_polling(filename)
         return
-    elif option == "output":
+    elif option == "-if":
+        input_flower(filename)
         return
-    elif option == "help":
+    elif option == "-ih":
+        input_hash(filename)
+        return
+    elif option == "-ir":
+        input_rosin(filename)
+        return
+    elif option == "-o":
+        output_polling(filename)
+        return
+    elif option == "-of":
+        output_flower(filename)
+        return
+    elif option == "-oh":
+        output_hash(filename)
+        return
+    elif option == "-or":
+        output_rosin(filename)
+        return
+    elif option == "-help" or "-h":
         print(help_msg())
         return 
     else:
